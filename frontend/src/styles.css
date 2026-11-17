@@ -26,6 +26,7 @@ p { margin: 0; color: var(--muted); max-width: 70ch; }
 .row { border-top: 1px solid var(--line); padding: 16px 0; }
 .card { background: var(--panel); border-left: 4px solid var(--teal); padding: 18px; margin-bottom: 14px; }
 .card h3 { color: var(--ink); }
+.service-card-image { display: block; width: 100%; max-height: 280px; object-fit: cover; border-radius: 6px; margin-bottom: 16px; }
 
 .btn { display: inline-block; background: var(--amber); color: var(--ink); font-weight: 700; font-size: 16px; padding: 14px 24px; border: 0; border-radius: 6px; cursor: pointer; }
 .btn:hover { filter: brightness(.95); }
@@ -37,3 +38,23 @@ p { margin: 0; color: var(--muted); max-width: 70ch; }
 .status { margin-top: 16px; }
 
 .footer { text-align: center; color: var(--muted); padding: 24px; }
+
+.reveal { opacity: 0; transform: translateY(32px); transition: opacity .7s ease, transform .7s ease; }
+.reveal.is-visible { opacity: 1; transform: none; }
+
+.services-list { display: grid; gap: 28px; }
+.service {
+  position: relative; min-height: 340px; display: flex; align-items: flex-end;
+  border-radius: 12px; overflow: hidden; background-size: cover; background-position: center;
+}
+.service::before {
+  content: ""; position: absolute; inset: 0;
+  background: linear-gradient(to top, rgba(18,32,47,.92) 10%, rgba(18,32,47,.2) 75%);
+}
+.service-body { position: relative; padding: 28px; max-width: 560px; }
+.service-body h3 { color: #fff; font-size: 26px; margin-bottom: 8px; }
+.service-body p { color: #e3e9ee; margin-bottom: 18px; }
+
+@media (prefers-reduced-motion: reduce) {
+  .reveal { opacity: 1; transform: none; transition: none; }
+}
